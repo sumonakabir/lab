@@ -1,29 +1,32 @@
-import org.junit.jupiter.api.Test;
 
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MyStackTest {
 
     @Test
-    public void testPush() {
-        MyStack stack = new MyStack();
-        stack.push(5);
+    void testPush() {
+        MyStack<Integer> stack = new MyStack<>();
+
+        stack.push(10);
 
         assertEquals(1, stack.getSize());
     }
 
     @Test
     void testTop() {
-        MyStack stack = new MyStack();
-        stack.push(10);
+        MyStack<Integer> stack = new MyStack<>();
 
-        assertEquals(10, stack.top());
+        stack.push(20);
+
+        assertEquals(20, stack.top());
     }
 
     @Test
     void testPop() {
-        MyStack stack = new MyStack();
-        stack.push(10);
+        MyStack<Integer> stack = new MyStack<>();
+
+        stack.push(30);
         stack.pop();
 
         assertTrue(stack.isEmpty());
@@ -31,14 +34,15 @@ public class MyStackTest {
 
     @Test
     void testIsEmpty() {
-        MyStack stack = new MyStack();
+        MyStack<Integer> stack = new MyStack<>();
 
         assertTrue(stack.isEmpty());
     }
 
     @Test
     void testGetSize() {
-        MyStack stack = new MyStack();
+        MyStack<Integer> stack = new MyStack<>();
+
         stack.push(1);
         stack.push(2);
 
@@ -46,16 +50,25 @@ public class MyStackTest {
     }
 
     @Test
-    void testPopEmptyStack() {
-        MyStack stack = new MyStack();
+    void testTopOnEmptyStack() {
+        MyStack<Integer> stack = new MyStack<>();
+
+        assertThrows(RuntimeException.class, () -> stack.top());
+    }
+
+    @Test
+    void testPopOnEmptyStack() {
+        MyStack<Integer> stack = new MyStack<>();
 
         assertThrows(RuntimeException.class, () -> stack.pop());
     }
 
     @Test
-    void testTopEmptyStack() {
-        MyStack stack = new MyStack();
+    void testGenericStringStack() {
+        MyStack<String> stack = new MyStack<>();
 
-        assertThrows(RuntimeException.class, () -> stack.top());
+        stack.push("DIU");
+
+        assertEquals("DIU", stack.top());
     }
 }

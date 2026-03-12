@@ -1,17 +1,17 @@
 import java.util.ArrayList;
 
-public class MyStack {
+public class MyStack<T> {
 
-    private ArrayList<Integer> elements = new ArrayList<>();
+    private ArrayList<T> elements = new ArrayList<>();
 
-    public int top() {
+    public T top() {
         if (isEmpty()) {
             throw new RuntimeException("Stack empty");
         }
         return elements.get(elements.size() - 1);
     }
 
-    public void push(int n) {
+    public void push(T n) {
         elements.add(n);
     }
 
