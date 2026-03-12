@@ -1,33 +1,32 @@
+import java.util.ArrayList;
+
 public class MyStack {
 
-    private int stackPointer = -1;
-    private int[] elements = new int[10];
+    private ArrayList<Integer> elements = new ArrayList<>();
 
     public int top() {
         if (isEmpty()) {
             throw new RuntimeException("Stack empty");
         }
-        return elements[stackPointer];
+        return elements.get(elements.size() - 1);
     }
 
     public void push(int n) {
-        stackPointer++;
-        elements[stackPointer] = n;
+        elements.add(n);
     }
 
     public void pop() {
         if (isEmpty()) {
             throw new RuntimeException("Stack empty");
         }
-        stackPointer--;
+        elements.remove(elements.size() - 1);
     }
 
     public boolean isEmpty() {
-        return stackPointer == -1;
+        return elements.isEmpty();
     }
 
     public int getSize() {
-        return stackPointer + 1;
+        return elements.size();
     }
 }
-
